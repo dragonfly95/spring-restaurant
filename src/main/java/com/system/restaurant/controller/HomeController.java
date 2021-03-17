@@ -1,11 +1,14 @@
 package com.system.restaurant.controller;
 
 import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
+import com.system.restaurant.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,6 +36,9 @@ public class HomeController {
 		
 		return "home";
 	}
+
+	@Autowired
+	MenuService menuService;
 
 	@RequestMapping(value = "/menu.do", method = RequestMethod.GET)
 	// '/menu' 라는 요청이 들어왔을 때 'menulist' method 를 실행한다

@@ -1,12 +1,22 @@
 package com.system.restaurant.controller;
 
+import com.system.restaurant.domain.*;
+import com.system.restaurant.mapper.*;
+import com.system.restaurant.service.*;
+import jdk.jfr.*;
+import lombok.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
+import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 @RestController
 public class MenuController {
 
 
-    @Resource
+    @Autowired
     MenuService menuService;
 
     /**
@@ -25,7 +35,7 @@ public class MenuController {
     @RequestMapping(value = "/menus/{menu_id}")
     public ResponseEntity<Menu> menuDetail(@PathVariable("menu_id") int menu_id) {
         Menu menu = menuService.findById(menu_id);
-        return new ResponseEntity<>(menu, HttpStatus.ACCEPTED);
+        return new ResponseEntity(menu, HttpStatus.ACCEPTED);
     }
 
 
@@ -35,7 +45,7 @@ public class MenuController {
     @RequestMapping(value = "/menus", method = RequestMethod.POST)
     public ResponseEntity<Menu> menuPost(@ModelAttribute Menu menudata) {
         int affected = menuService.post(menudata);
-        return new ResponseEntity<>(new Menu(), HttpStatus.ACCEPTED);
+        return new ResponseEntity(new Menu(), HttpStatus.ACCEPTED);
     }
 
 
@@ -43,13 +53,14 @@ public class MenuController {
     @RequestMapping(value = "/menus/{menu_id}", method = RequestMethod.PUT)
     public ResponseEntity<Menu> menuPut(@RequestBody Menu menudata) {
         int affected = menuService.put(menudata);
-        return new ResponseEntity<>(new Menu(), HttpStatus.ACCEPTED);
+        return new ResponseEntity(new Menu(), HttpStatus.ACCEPTED);
     }
 
     // 삭제
     @RequestMapping(value = "/menus/{menu_id}", method = RequestMethod.DELETE)
     public ResponseEntity<Menu> menuDelete(@PathVariable("menu_id") int menu_id) {
         int affected = menuService.delete(menu_id);
-        return new ResponseEntity<>(new Menu(), HttpStatus.ACCEPTED);
+        return new ResponseEntity(new Menu(), HttpStatus.ACCEPTED);
     }
 }
+
