@@ -17,19 +17,19 @@
 
     <insert id="post" parameterType="com.system.restaurant.domain.Menu">
         insert into tbl_menu(menu_name, menu_price, cooking_time)
-        values (#{menu_name}, #{menu_price}, #{cooking_time})
+        values (#{menuName}, #{menuPrice}, #{cookingTime})
     </insert>
 
     <update id="put" parameterType="com.system.restaurant.domain.Menu">
         update tbl_menu set
-        menu_name = #{menu_name},
-        menu_price = #{menu_price},
-        cooking_time = #{cooking_time}
-        where menu_id =#{menu_id}
+        menu_name = #{menuName},
+        menu_price = #{menuPrice},
+        cooking_time = #{cookingTime}
+        where menu_id =#{menuId}
     </update>
 
     <delete id="delete" parameterType="int">
-        delete from tbl_menu where menu_id = #{menu_id}
+        delete from tbl_menu where menu_id = #{menuId}
     </delete>
 
 </mapper>

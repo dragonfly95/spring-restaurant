@@ -10,6 +10,10 @@
    top: 106px;
    left:300px;
  }
+ label {
+   display: inline-block;
+   width: 100px;
+ }
  </style>
  </head>
  <body>
@@ -30,7 +34,7 @@
    <h2>list menu </h2>
     <ul class="menus-list">
         <c:forEach items="${menulist}" var="demo">
-               <li data-id="${demo.menu_id}">${demo.menu_id} / ${demo.menu_name} / ${demo.menu_price} / ${demo.cooking_time} </li>
+               <li data-id="${demo.menuId}">${demo.menuId} / ${demo.menuName} / ${demo.menuPrice} / ${demo.cookingTime} </li>
         </c:forEach>
    </ul>
 
@@ -40,13 +44,18 @@
       <tr>
           <td>
             <input type="hidden" name="menu_id" value=""/>
-            <input type="text" placeholder="menu_name" name="menu_name" value="" /></td>
+            <label for="t1">menuName: </label>
+            <input type="text" placeholder="menu_name" id="t1" name="menu_name" value="" /></td>
       </tr>
       <tr>
-          <td><input type="text" placeholder="menu_price" name="menu_price" value="" /></td>
+          <td>
+            <label for="t1">Price: </label>
+            <input type="text" placeholder="menu_price" id="t2" name="menu_price" value="" /></td>
       </tr>
       <tr>
-          <td><input type="text" placeholder="cooking_time" name="cooking_time" value="" /></td>
+          <td>
+          <label for="t1">cooking Time: </label>
+          <input type="text" placeholder="cooking_time" id="t3" name="cooking_time" value="" /></td>
       </tr>
       <tr>
           <td>
@@ -65,9 +74,9 @@ $(document).ready(function () {
   $('[name="cooking_time"]').val();
   $('.btn-menu-save').on('click', function() {
     var dataObj = {
-      menu_name: $('[name="menu_name"]').val(),
-      menu_price: $('[name="menu_price"]').val(),
-      cooking_time: $('[name="cooking_time"]').val()
+      menuName: $('[name="menu_name"]').val(),
+      menuPrice: $('[name="menu_price"]').val(),
+      cookingTime: $('[name="cooking_time"]').val()
       };
       debugger
     $.ajax({
@@ -90,20 +99,20 @@ $(document).ready(function () {
       // data: "data",  // url?id=1
       dataType: "json",  // return type
       success: function (response) {
-        $('.modify [name="menu_id"]').val(response.menu_id);
-        $('.modify [name="menu_name"]').val(response.menu_name);
-        $('.modify [name="menu_price"]').val(response.menu_price);
-        $('.modify [name="cooking_time"]').val(response.cooking_time);
+        $('.modify [name="menu_id"]').val(response.menuId);
+        $('.modify [name="menu_name"]').val(response.menuName);
+        $('.modify [name="menu_price"]').val(response.menuPrice);
+        $('.modify [name="cooking_time"]').val(response.cookingTime);
       }
     });
   });
   // 수정
   $('.btn-menu-save2').on('click', function() {
     var obj = {
-        "menu_id": $('.modify [name="menu_id"]').val(),
-        "menu_name": $('.modify [name="menu_name"]').val(),
-        "menu_price": $('.modify [name="menu_price"]').val(),
-        "cooking_time": $('.modify [name="cooking_time"]').val()
+        "menuId": $('.modify [name="menu_id"]').val(),
+        "menuName": $('.modify [name="menu_name"]').val(),
+        "menuPrice": $('.modify [name="menu_price"]').val(),
+        "cookingTime": $('.modify [name="cooking_time"]').val()
     };
     $.ajax({
       type: "PUT",
@@ -138,7 +147,7 @@ $(document).ready(function () {
       dataType: "json",  // return type
       success: function (response) {
         $.each(response, function (indexInArray, valueOfElement) {
-            str += '<li data-id="'+ valueOfElement.menu_id + '"> ' + valueOfElement.menu_id + ' /' + valueOfElement.menu_name + ' /' + valueOfElement.menu_price + ' /' + valueOfElement.cooking_time + '</li>';
+            str += '<li data-id="'+ valueOfElement.menuId + '"> ' + valueOfElement.menuId + ' /' + valueOfElement.menuName + ' /' + valueOfElement.menuPrice + ' /' + valueOfElement.cookingTime + '</li>';
         });
         $('.menus-list').html(str);
       }
