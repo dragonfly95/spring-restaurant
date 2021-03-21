@@ -36,6 +36,17 @@ public class UserController {
         return ResponseEntity.ok(new ResponseVo(200, ResponseVo.OK));
     }
 
+
+    /**
+     * {
+     * "userId": 1,
+     * "userName": "hongkil dong",
+     * "userLogin": "dragonfly95",
+     * "userPassword": "123456",
+     * "userEmail": "hongkil.dong@gmail.com",
+     * "userTye": "waiter"
+     * }
+     */
     @PutMapping(value = "users/{userId}")
     public ResponseEntity updateUser(@RequestBody UserVO userVO) {
         int affected = userMapper.updateUser(userVO);

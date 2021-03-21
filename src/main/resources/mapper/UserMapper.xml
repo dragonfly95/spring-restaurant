@@ -10,6 +10,7 @@
         select user_id, user_name, user_login, user_password, user_email, user_type
         from tbl_user
     </select>
+
     <select id="selectOne" resultType="java.lang.Integer">
         select user_id, user_name, user_login, user_password, user_email, user_type
         from tbl_user
@@ -19,16 +20,16 @@
 
     <insert id="createUser">
         insert into tbl_user (user_id, user_name, user_login, user_password, user_email, user_type)
-        values (#{userId}, #{userName}, #{userLogin}, #{userPassword}, #{userEmail}, #{userType.text})
+        values (#{userId}, #{userName}, #{userLogin}, md5(#{userPassword}), #{userEmail}, #{userType})
     </insert>
 
     <update id="updateUser">
         update tbl_user set
             user_name = #{userName},
             user_login = #{userLogin},
-            user_password = #{userPassword},
+            user_password = md5(#{userPassword}),
             user_email = #{userEmail},
-            user_typ = #{userType}
+        user_type = #{userType}
         where user_id = #{userId}
     </update>
 

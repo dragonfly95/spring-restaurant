@@ -1,15 +1,17 @@
 package com.system.restaurant.domain;
 
 public enum UserType {
-    WAITER(1, "waiter"), CHEF(2, "chef"), ADMIN(3, "admin");
+    waiter(1), chef(2), admin(3);
 
     int code;
-    String text;
+
     UserType() {}
 
-    UserType(int i, String r) {
+    UserType(int i) {
         this.code = i;
-        this.text = r;
     }
 
+    public int getCode() {
+        return code;
+    }
 }
