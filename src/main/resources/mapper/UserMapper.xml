@@ -17,6 +17,12 @@
         where user_id = #{userId}
     </select>
 
+    <select id="loginUser" resultType="com.system.restaurant.domain.UserVO">
+        select user_id, user_name, user_login, user_password, user_email, user_type
+        from tbl_user
+        where user_login = #{userLogin}
+    </select>
+
 
     <insert id="createUser">
         insert into tbl_user (user_id, user_name, user_login, user_password, user_email, user_type)

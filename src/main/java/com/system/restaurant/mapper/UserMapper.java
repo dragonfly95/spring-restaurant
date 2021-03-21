@@ -15,4 +15,6 @@ public interface UserMapper {
 
     int selectOne(int userId);
 
+    UserVO loginUser(String userLogin);
+
 }

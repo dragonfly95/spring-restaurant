@@ -1,4 +1,4 @@
-package com.system.restaurant.controller;
+package com.system.restaurant.domain;
 
 
 import lombok.*;

@@ -10,8 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Handles requests for the application home page.
@@ -47,4 +46,15 @@ public class HomeController {
 
 		return "menulist";
 	}
+
+	@GetMapping(value = "/login.do")
+	public String loginPage() {
+		return "login";
+	}
+
+	@GetMapping(value = "/main.do")
+	public String mainPage() {
+		return "main";
+	}
+
 }

@@ -2,8 +2,10 @@ package com.system.restaurant.domain;
 
 import lombok.*;
 
+import java.io.*;
+
 @Data
-public class UserVO {
+public class UserVO implements Serializable {
     private int userId;
     private String userName;
     private String userLogin;
