@@ -3,6 +3,7 @@ package com.system.restaurant.controller;
 import java.text.DateFormat;
 import java.util.*;
 
+import com.system.restaurant.*;
 import com.system.restaurant.domain.*;
 import com.system.restaurant.service.*;
 import org.slf4j.Logger;
@@ -47,6 +48,7 @@ public class HomeController {
 		return "menulist";
 	}
 
+	@LogDate
 	@GetMapping(value = "/login.do")
 	public String loginPage() {
 		return "login";
