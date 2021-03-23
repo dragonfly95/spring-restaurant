@@ -21,14 +21,13 @@ public class MyFilter implements Filter {
         System.out.println("requestURI = " + requestURI);
 
         boolean apply = true;
-        if(!apply) {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/login.do");
-            requestDispatcher.forward(req, res);
-        } else {
-
+        if(apply) {
             MyRequestWrapper myRequest = new MyRequestWrapper((HttpServletRequest) request);
             myRequest.setResponse(res);
             chain.doFilter(myRequest, response);
+        } else {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/login.do");
+            requestDispatcher.forward(req, res);
         }
 //        res.sendError(500, "error message");
 //        res.sendRedirect("login.do");
