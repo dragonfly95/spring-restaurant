@@ -55,7 +55,8 @@ public class HomeController {
 	}
 
 	@GetMapping(value = "/main.do")
-	public String mainPage() {
+	public String mainPage(UserVO userVO, Model model) {
+		model.addAttribute("userVO1", userVO);
 		return "main";
 	}
 
