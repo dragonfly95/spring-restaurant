@@ -91,7 +91,8 @@ public class MenuControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andDo(document.document(
-                        requestFields(
+                        responseFields(
+                                fieldWithPath("menuId").description("상품 이름"),
                                 fieldWithPath("menuName").description("상품 이름"),
                                 fieldWithPath("menuPrice").description("상품 설명"),
                                 fieldWithPath("cookingTime").type(Integer.class).description("상품 수량")
