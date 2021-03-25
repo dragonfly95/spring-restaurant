@@ -44,7 +44,7 @@ public class MenuController {
     @RequestMapping(value = "/menus", method = RequestMethod.POST)
     public ResponseEntity<Menu> menuPost(@ModelAttribute Menu menudata) {
         int affected = menuService.post(menudata);
-        return new ResponseEntity(new Menu(), HttpStatus.ACCEPTED);
+        return new ResponseEntity(new Menu(), HttpStatus.OK);
     }
 
 

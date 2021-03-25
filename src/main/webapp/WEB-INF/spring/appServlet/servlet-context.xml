@@ -49,22 +49,22 @@
 
 	<context:component-scan base-package="com.system.restaurant" />
 
-	<beans:bean id="MyInterceptor" class="com.system.restaurant.MyInterceptor"/>
-	<interceptors>
-		<interceptor>
-			<mapping path="/**"/>
-			<exclude-mapping path="/login.do"/>
-			<exclude-mapping path="/mysite/login"/>
-			<beans:ref bean="MyInterceptor"/>
-		</interceptor>
-	</interceptors>
+<!--	<beans:bean id="MyInterceptor" class="com.system.restaurant.MyInterceptor"/>-->
+<!--	<interceptors>-->
+<!--		<interceptor>-->
+<!--			<mapping path="/**"/>-->
+<!--			<exclude-mapping path="/login.do"/>-->
+<!--			<exclude-mapping path="/mysite/login"/>-->
+<!--			<beans:ref bean="MyInterceptor"/>-->
+<!--		</interceptor>-->
+<!--	</interceptors>-->
 
-	<aop:aspectj-autoproxy/>
+<!--	<aop:aspectj-autoproxy/>-->
 
-	<annotation-driven>
-		<argument-resolvers>
-			<beans:bean class="com.system.restaurant.MyArgumentResolver"/>
-		</argument-resolvers>
-	</annotation-driven>
+<!--	<annotation-driven>-->
+<!--		<argument-resolvers>-->
+<!--			<beans:bean class="com.system.restaurant.MyArgumentResolver"/>-->
+<!--		</argument-resolvers>-->
+<!--	</annotation-driven>-->
 
 </beans:beans>
