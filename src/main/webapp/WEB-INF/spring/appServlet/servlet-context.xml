@@ -67,4 +67,8 @@
 <!--		</argument-resolvers>-->
 <!--	</annotation-driven>-->
 
+	<beans:bean id="swagger2Config" class="com.system.restaurant.SwaggerConfig"></beans:bean>
+	<mvc:resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"></mvc:resources>
+	<mvc:resources location="classpath:/META-INF/resources/webjars/"  mapping="/webjars/**"></mvc:resources>
+
 </beans:beans>
