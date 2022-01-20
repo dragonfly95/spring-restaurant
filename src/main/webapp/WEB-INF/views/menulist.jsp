@@ -146,6 +146,7 @@ $(document).ready(function () {
       url: "./menus",
       dataType: "json",  // return type
       success: function (response) {
+        debugger
         $.each(response, function (indexInArray, valueOfElement) {
             str += '<li data-id="'+ valueOfElement.menuId + '"> ' + valueOfElement.menuId + ' /' + valueOfElement.menuName + ' /' + valueOfElement.menuPrice + ' /' + valueOfElement.cookingTime + '</li>';
         });
