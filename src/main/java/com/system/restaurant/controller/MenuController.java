@@ -23,7 +23,8 @@ public class MenuController {
      * @return
      */
     @RequestMapping(value = "/menus")
-    public ResponseEntity<ArrayList<Menu>> menulist2() {
+    public ResponseEntity<ArrayList<Menu>> menulist2(AdminUser adminUser) {
+        String role = adminUser.getRole();
         ArrayList<Menu> menulist = menuService.menulist();
         Iterator<Menu> iterator = menulist.iterator();
         while(iterator.hasNext()) {
@@ -38,7 +39,7 @@ public class MenuController {
     //menus?id=1
     //menus/1
     @RequestMapping(value = "/menus/{menu_id}")
-    public ResponseEntity<Menu> menuDetail(@PathVariable("menu_id") int menu_id) {
+    public ResponseEntity<Menu> menuDetail(@PathVariable("menu_id") int menu_id, AdminUser adminUser) {
         Menu menu = menuService.findById(menu_id);
         return new ResponseEntity(menu, HttpStatus.ACCEPTED);
     }

@@ -1,6 +1,7 @@
 package com.system.restaurant.admin;
 
 import com.system.restaurant.LogGetDate;
+import com.system.restaurant.domain.AdminUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
