@@ -1,9 +1,6 @@
 package com.system.restaurant.controller;
 
 
-import lombok.*;
-
-@Data
 public class ResponseVo {
     public static final String OK = "OK";
     private int code;
@@ -15,4 +12,21 @@ public class ResponseVo {
         this.code = i;
         this.message = m;
     }
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+    
 }
