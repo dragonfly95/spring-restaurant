@@ -21,7 +21,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 
-
+	<!-- 순서 제일 중요 -->
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
 			<beans:bean class="com.system.restaurant.AdminUserResolver"></beans:bean>
