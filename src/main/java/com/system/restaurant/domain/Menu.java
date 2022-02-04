@@ -1,7 +1,15 @@
 package com.system.restaurant.domain;
 
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Menu {
     private int menuId;
+
+    @NotEmpty
     private String menuName;
     private float menuPrice;
     private int cookingTime;

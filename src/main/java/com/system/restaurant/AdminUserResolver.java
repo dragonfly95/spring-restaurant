@@ -22,6 +22,7 @@ public class AdminUserResolver implements HandlerMethodArgumentResolver {
         Object admin = request.getAttribute("admin");
         if (admin == null) {
             admin = new AdminUser("developer");
+            // login session null exception
         }
         return admin;
     }

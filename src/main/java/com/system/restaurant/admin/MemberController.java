@@ -16,7 +16,7 @@ public class MemberController {
     @RequestMapping(value = "admin/login.do", method = RequestMethod.GET)
     @LogGetDate
     public String login(HttpServletRequest request) {
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession();
         session.setAttribute("admin", new AdminUser("developer"));
         return "admin/login";
     }

@@ -1,11 +1,15 @@
 package com.system.restaurant.controller;
 
+import com.system.restaurant.ValidCustomException;
 import com.system.restaurant.domain.*;
 import com.system.restaurant.service.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @RestController
@@ -49,7 +53,15 @@ public class MenuController {
     // formdata submit => @ModelAttribute Menu menudata
     // json => @RequestBody Menu menudata 테이터의 흐름
     @RequestMapping(value = "/menus", method = RequestMethod.POST)
-    public ResponseEntity<Menu> menuPost(@ModelAttribute Menu menudata) {
+    public ResponseEntity<Menu> menuPost(@ModelAttribute @Valid Menu menudata/*, BindingResult bindingResult*/) {
+//        if (bindingResult.hasErrors()) {
+//            throw new ValidCustomException("dsdf");
+//        }
+        Assert.hasLength(menudata.getMenuName(), "값을 넣어주세요");
+
+        if (menudata.getMenuName().length() == 0) {
+            // throw new ValidCustomException();
+        }
         int affected = menuService.post(menudata);
         
         return new ResponseEntity(new Menu(), HttpStatus.ACCEPTED);
@@ -58,7 +70,7 @@ public class MenuController {
 
     // 수정
     @RequestMapping(value = "/menus/{menu_id}", method = RequestMethod.PUT)
-    public ResponseEntity<Menu> menuPut(@RequestBody Menu menudata) {
+    public ResponseEntity<Menu> menuPut(@RequestBody @Valid Menu menudata) {
         int affected = menuService.put(menudata);
         return new ResponseEntity(new Menu(), HttpStatus.ACCEPTED);
     }
