@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class MyErrorControllerAdvice {
 
-    @ExceptionHandler({BindException.class, ValidCustomException.class})
+    @ExceptionHandler(BindException.class)
     public ResponseEntity<String> processValidationError(BindException exception) {
         BindingResult bindingResult = exception.getBindingResult();
 
@@ -22,6 +22,18 @@ public class MyErrorControllerAdvice {
         for (ObjectError error : bindingResult.getAllErrors()) {
             msg.append(error.getDefaultMessage() + "\n");
         }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json;charset=UTF-8");
+        return new ResponseEntity(new ResponseVO(msg.toString()), headers, HttpStatus.OK);
+    }
+
+
+    @ExceptionHandler({ValidCustomException.class})
+    public ResponseEntity<String> valid(ValidCustomException exception) {
+
+        StringBuffer msg = new StringBuffer();
+        msg.append(exception.getMessage());
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json;charset=UTF-8");
