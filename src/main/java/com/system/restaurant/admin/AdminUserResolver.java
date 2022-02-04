@@ -1,4 +1,4 @@
-package com.system.restaurant;
+package com.system.restaurant.admin;
 
 import com.system.restaurant.domain.AdminUser;
 import org.springframework.core.MethodParameter;

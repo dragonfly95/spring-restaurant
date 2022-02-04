@@ -8,6 +8,7 @@ import com.system.restaurant.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +42,7 @@ public class HomeController {
 	@RequestMapping(value = "/menu.do", method = RequestMethod.GET)
 	// '/menu' 라는 요청이 들어왔을 때 'menulist' method 를 실행한다
 	//public String menulist(Model, model, HttpServletRequest request){
-	public String menulist(ModelMap model) {
+	public String menulist(Device device, ModelMap model) {
 		ArrayList<Menu> menulist = menuService.menulist(); //== (menu.getMenuName(),,,,);
 		model.addAttribute("menulist", menulist);
 

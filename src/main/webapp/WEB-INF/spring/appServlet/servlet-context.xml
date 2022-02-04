@@ -24,7 +24,8 @@
 	<!-- 순서 제일 중요 -->
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
-			<beans:bean class="com.system.restaurant.AdminUserResolver"></beans:bean>
+			<beans:bean class="com.system.restaurant.admin.AdminUserResolver"></beans:bean>
+			<beans:bean class="org.springframework.mobile.device.DeviceWebArgumentResolver"/>
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 
