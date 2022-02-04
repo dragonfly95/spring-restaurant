@@ -1,5 +1,6 @@
 package com.system.restaurant;
 
+import com.system.restaurant.domain.AdminUser;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -14,7 +15,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 
         System.out.println("preHandle = " );
         HttpSession session = request.getSession();
-        String admin = (String) session.getAttribute("admin");
+        AdminUser admin = (AdminUser) session.getAttribute("admin");
         if(admin == null) {
             response.sendRedirect("/admin/login.do");
             return false;
