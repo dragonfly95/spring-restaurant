@@ -65,6 +65,10 @@
 			<mvc:exclude-mapping path="/admin/login.do"/>
 			<beans:bean id="adminSessionInterceptor" class="com.system.restaurant.AdminInterceptor"/>
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor"/>
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 
