@@ -34,7 +34,7 @@ ${page}
 
     [<a href='#' data-page='${i}'>${i}</a>]
 
-    <c:if test="${page.end < page.total}">
+    <c:if test="${page.end * page.groupSize < page.total}">
         <c:if test="${page.end == i}">
         [<a href='#' data-page='${i+1}'>Next Page</a>]
         </c:if>

@@ -14,7 +14,7 @@ public class Page {
     public int getBegin() {
         int calc = ((page / size) * groupSize) + 1;
         if (page % groupSize == 0) {
-            calc = calc -10;
+            calc = calc - groupSize;
         }
         return calc;
     }
@@ -22,13 +22,18 @@ public class Page {
     public int getEnd() {
         int calc = (page / size + 1) * groupSize;
         if (page % groupSize == 0) {
-            calc = calc -10;
+            calc = calc - groupSize;
         }
 
         int end1 = calc * size;
         if (end1 >= total) {
-            calc = page;
+            if(total % end1 == 0) {
+                calc = total / size;
+            } else {
+                calc = (total / size) + 1;
+            }
         }
+
         return calc;
     }
 
