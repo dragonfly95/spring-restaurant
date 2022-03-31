@@ -15,11 +15,13 @@
 
 <ul>
 <c:forEach items="${list}" var="item">
-    <li>${item.title} - ${item.content}</li>
+    <li><a href="#" data-id="${item.id}">${item.title} - ${item.content}</a></li>
 </c:forEach>
 </ul>
 
 <br/>
+<br/>
+<input type="button" name="btnNewForm" value="신규작성"/>
 <br/>
 ${page}
 <br/>
@@ -49,6 +51,15 @@ $(document).ready(function() {
     $('#pagination a').on('click', function() {
         var page = $(this).data('page');
         location.href='./board.do?page=' + page;
+    });
+
+    $('ul > li > a').on('click', function() {
+        var id = $(this).data('id');
+        location.href='./boardView.do?id=' + id;
+    });
+
+    $('[name="btnNewForm"]').on('click', function() {
+        location.href = '/boardForm.do?id=';
     });
 });
 </script>

@@ -14,12 +14,23 @@
                 `reg_date`
         FROM `board`
         WHERE 1
+        order by `id` desc
         limit #{offset}, #{size}
     </select>
     <select id="countBoard" resultType="java.lang.Integer">
         select count(*)
         from board
     </select>
+    <select id="boardView" resultType="java.util.HashMap">
+        SELECT
+                `id`,
+                `title`,
+                `content`,
+                `reg_date`
+        FROM `board`
+        WHERE `id` = #{id}
+    </select>
+
     <insert id="insertBatch">
         INSERT INTO `board`(`title`, `content`, `reg_date`)
         VALUES
@@ -27,4 +38,21 @@
             (#{item.title}, #{item.content}, now())
         </foreach>
     </insert>
+    <insert id="saveBoard">
+        INSERT INTO `board`(`title`, `content`, `reg_date`)
+        VALUES (
+            #{title},
+            #{content},
+            now()
+        )
+    </insert>
+    <update id="updateBoard">
+        UPDATE
+            `board`
+        SET
+            `title` = #{title},
+            `content` = #{content}
+        WHERE
+            `id` = #{id}
+    </update>
 </mapper>
