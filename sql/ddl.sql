@@ -1,5 +1,21 @@
 CREATE DATABASE `restaurant` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
+
+CREATE TABLE `board` (
+  `id` int(11) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `content` text NOT NULL,
+  `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `board`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `board`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+//------------
+
 CREATE TABLE `tbl_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(45) NOT NULL,
