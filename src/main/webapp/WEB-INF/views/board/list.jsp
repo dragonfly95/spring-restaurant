@@ -24,8 +24,21 @@
 ${page}
 <br/>
 <div id="pagination">
-<c:forEach var="i" begin="1" end="10">
-[<a href='#' data-page='${i}'>${i}</a>]
+<c:forEach var="i" begin="${page.begin}" end="${page.end}">
+
+    <c:if test="${page.begin != 1}">
+        <c:if test="${page.begin == i}">
+        [<a href='#' data-page='${i-1}'>Prev Page</a>]
+        </c:if>
+    </c:if>
+
+    [<a href='#' data-page='${i}'>${i}</a>]
+
+    <c:if test="${page.end < page.total}">
+        <c:if test="${page.end == i}">
+        [<a href='#' data-page='${i+1}'>Next Page</a>]
+        </c:if>
+    </c:if>
 </c:forEach>
 </div>
 

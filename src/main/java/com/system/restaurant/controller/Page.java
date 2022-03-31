@@ -12,11 +12,19 @@ public class Page {
     private int end;
 
     public int getBegin() {
-        return 1 + ((page-1) / groupSize);
+        int calc = ((page / size) * groupSize) + 1;
+        if (page % groupSize == 0) {
+            calc = calc -10;
+        }
+        return calc;
     }
 
     public int getEnd() {
-        return groupSize * getBegin();
+        int calc = (page / size + 1) * groupSize;
+        if (page % groupSize == 0) {
+            calc = calc -10;
+        }
+        return calc;
     }
 
     public int getGroupSize() {
@@ -36,7 +44,7 @@ public class Page {
     }
 
     public int getOffset() {
-        return page * size;
+        return (page-1) * size;
     }
 
     public int getPage() {
