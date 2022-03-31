@@ -15,7 +15,7 @@
 
 <ul>
 <c:forEach items="${list}" var="item">
-    <li><a href="#" data-id="${item.id}">${item.title} - ${item.content}</a></li>
+    <li><a href="#" data-id="${item.id}">${item.title} - ${item.content} - ${item.reg_date}</a></li>
 </c:forEach>
 </ul>
 
