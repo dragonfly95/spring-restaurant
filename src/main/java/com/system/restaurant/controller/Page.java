@@ -2,7 +2,7 @@ package com.system.restaurant.controller;
 
 
 public class Page {
-    public int page;
+    public int page = 1;
     public int size = 10;
     public int offset;
     private int total;
@@ -23,6 +23,11 @@ public class Page {
         int calc = (page / size + 1) * groupSize;
         if (page % groupSize == 0) {
             calc = calc -10;
+        }
+
+        int end1 = calc * size;
+        if (end1 >= total) {
+            calc = page;
         }
         return calc;
     }

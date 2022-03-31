@@ -15,7 +15,7 @@
 
 <ul>
 <c:forEach items="${list}" var="item">
-    <li>${item.title}</li>
+    <li>${item.title} - ${item.content}</li>
 </c:forEach>
 </ul>
 
