@@ -1,13 +1,9 @@
 package com.system.restaurant.controller;
 
 import com.system.restaurant.domain.*;
-import com.system.restaurant.mapper.*;
 import com.system.restaurant.service.*;
-import jdk.jfr.*;
-import lombok.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
-import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -19,6 +15,9 @@ public class MenuController {
     @Autowired
     MenuService menuService;
 
+    @Autowired
+    UserService userService;
+
     /**
      * 메뉴 목록 api
      * @return
@@ -26,6 +25,12 @@ public class MenuController {
     @RequestMapping(value = "/menus")
     public ResponseEntity<ArrayList<Menu>> menulist2() {
         ArrayList<Menu> menulist = menuService.menulist();
+        Iterator<Menu> iterator = menulist.iterator();
+        while(iterator.hasNext()) {
+        	Menu next = iterator.next();
+        }
+        List<UserVO> users = userService.list();
+
         return new ResponseEntity<ArrayList<Menu>>(menulist, HttpStatus.ACCEPTED);
     }
 
@@ -45,6 +50,7 @@ public class MenuController {
     @RequestMapping(value = "/menus", method = RequestMethod.POST)
     public ResponseEntity<Menu> menuPost(@ModelAttribute Menu menudata) {
         int affected = menuService.post(menudata);
+        
         return new ResponseEntity(new Menu(), HttpStatus.ACCEPTED);
     }
 
