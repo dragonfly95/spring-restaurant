@@ -25,16 +25,23 @@ public class BoardController {
         List<Board> list = boardMapper.boardList(page);
         int total = boardMapper.countBoard(page);
 
-        List<Board> data = new ArrayList<Board>();
-        for (int i = 0; i < 10000; i++) {
-            data.add(new Board("title"+i, "content"+i));
+        page.setTotal(total);
 
-            int row = i % 1000;
-            if (row == 0 && i != 0) {
-                Map<String, Object> batchData = new HashMap<>();
-                batchData.put("data", data);
-                boardMapper.insertBatch(batchData);
-                data.clear();
+        model.addAttribute("list", list);
+
+        // data 없을 때 10000건 등록
+        if (total == 0) {
+            List<Board> data = new ArrayList<Board>();
+            for (int i = 0; i < 10000; i++) {
+                data.add(new Board("title"+i, "content"+i));
+
+                int row = i % 1000;
+                if (row == 0 && i != 0) {
+                    Map<String, Object> batchData = new HashMap<>();
+                    batchData.put("data", data);
+                    boardMapper.insertBatch(batchData);
+                    data.clear();
+                }
             }
         }
 

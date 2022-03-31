@@ -18,5 +18,26 @@
     <li>${item.title}</li>
 </c:forEach>
 </ul>
+
+<br/>
+<br/>
+${page}
+<br/>
+<div id="pagination">
+<c:forEach var="i" begin="1" end="10">
+[<a href='#' data-page='${i}'>${i}</a>]
+</c:forEach>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script>
+$(document).ready(function() {
+    $('#pagination a').on('click', function() {
+        var page = $(this).data('page');
+        location.href='./board.do?page=' + page;
+    });
+});
+</script>
 </body>
 </html>

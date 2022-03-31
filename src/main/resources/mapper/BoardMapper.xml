@@ -14,7 +14,7 @@
                 `reg_date`
         FROM `board`
         WHERE 1
-        limit 0, 10
+        limit #{offset}, #{size}
     </select>
     <select id="countBoard" resultType="java.lang.Integer">
         select count(*)
