@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.system.restaurant.mapper.BoardMapper">
+
+    <select id="boardList" resultType="com.system.restaurant.controller.Board">
+        SELECT
+                `id`,
+                `title`,
+                `content`,
+                `reg_date`
+        FROM `board`
+        WHERE 1
+        limit 0, 10
+    </select>
+    <select id="countBoard" resultType="java.lang.Integer">
+        select count(*)
+        from board
+    </select>
+    <insert id="insertBatch">
+        INSERT INTO `board`(`title`, `content`, `reg_date`)
+        VALUES
+        <foreach collection="data" item="item" index="index" separator="," >
+            (#{item.title}, #{item.content}, now())
+        </foreach>
+    </insert>
+</mapper>
