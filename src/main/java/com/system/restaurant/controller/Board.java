@@ -7,7 +7,7 @@ public class Board {
     private int id;
     private String title;
     private String content;
-    private Date reg_date;
+    private Timestamp regDate;
 
     public Board() {}
 
@@ -16,7 +16,8 @@ public class Board {
         this.content = content;
     }
 
-    public int getId() {
+    
+	public int getId() {
         return id;
     }
 
@@ -40,12 +41,12 @@ public class Board {
         this.content = content;
     }
 
-    public Date getReg_date() {
-        return reg_date;
+    public Timestamp getRegDate() {
+        return regDate;
     }
 
-    public void setReg_date(Date reg_date) {
-        this.reg_date = reg_date;
+    public void setRegDate(Timestamp regDate) {
+        this.regDate = regDate;
     }
 
     @Override
@@ -54,7 +55,7 @@ public class Board {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", reg_date=" + reg_date +
+                ", reg_date=" + regDate +
                 '}';
     }
 }
