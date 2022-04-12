@@ -4,3 +4,4 @@
 2. interceptor 
 3. aop 
 4. methodargumentresolver 
+5. mybatis
